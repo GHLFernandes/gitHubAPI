@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import { SearchUser } from './components/SearchUser';
+import { InfoUser } from './components/InfoUser';
 
-function App() {
+export const App = () => {
+  const [userData, setUserData] = useState<IUser>();
+
+  const handleUserData = (userData: IUser | undefined) =>{
+    setUserData(userData);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <p>Hello World!</p>
+        <SearchUser getUserData={handleUserData}/>
+        <InfoUser user={userData}/>
       </header>
     </div>
   );
-}
+};
 
 export default App;
